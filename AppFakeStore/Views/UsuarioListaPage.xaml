@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFakeStore.Views.UsuarioListaPage"
+             xmlns:vm="clr-namespace:AppFakeStore.ViewModels"
+             xmlns:model="clr-namespace:AppFakeStore.Models"
+             x:DataType="vm:UsuarioListaViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="10" Spacing="10">
+
+            <!-- Sección de búsqueda -->
+            
+
+            <!-- Lista de usuarios -->
+            <RefreshView Command="{Binding GetUserCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding Usuarios}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding UsuarioSeleccionado}"
+                                SelectionChangedCommand="{Binding GoToDetailCommand}">
+
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="50">
+                            <Image Source="not_found.jpg" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="No se encontraron usuarios." HorizontalOptions="Center" TextColor="Gray"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Usuario">
+                            <Frame Margin="10" Padding="15" BackgroundColor="Lavender" CornerRadius="10" HasShadow="True">
+                                <Grid ColumnDefinitions="auto,*" ColumnSpacing="10">
+                                    <!-- Imagen de usuario o icono -->
+                                    <Image Source="user_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center"/>
+                                    <!-- Detalles del usuario -->
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding username}" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Text="{Binding Email}" FontSize="14" TextColor="Gray"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </RefreshView>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

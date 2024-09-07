@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFakeStore.Views.AcercaPage"
+             Title="Acerca del Desarrollador">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Image Source="fotodesarrollador.jpg" 
+               HeightRequest="150" 
+               WidthRequest="150" 
+               Aspect="AspectFill"
+               HorizontalOptions="Center" />
+
+        <Label 
+            Text="Datos del Programador"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <Label 
+            Text="Nombre: Valentina Nieto"
+            FontSize="18"
+            HorizontalOptions="Center" />
+
+        <Label 
+            Text="Email: valennieto@gmail.com"
+            FontSize="18"
+            HorizontalOptions="Center" />
+
+        <Button x:Name="IconBtn" Margin="0, 10" ContentLayout="Top, 5" Text="Gracias" Clicked="IconBtn_Clicked" WidthRequest="120" HeightRequest="70">
+            <Button.ImageSource>
+                <FontImageSource FontFamily="MaterialDesignIcons" Glyph="&#xe158;" />
+            </Button.ImageSource>
+        </Button>
+
+        <Button x:Name="BackBtn" ContentLayout="Top, 5" Text="Volver" Clicked="BackBtn_Clicked" WidthRequest="120" HeightRequest="70">
+            <Button.ImageSource>
+                <FontImageSource FontFamily="MaterialDesignIcons" Glyph="&#xeba6;" />
+            </Button.ImageSource>
+        </Button>
+
+    </VerticalStackLayout>
+</ContentPage>

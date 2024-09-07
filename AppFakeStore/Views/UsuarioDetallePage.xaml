@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFakeStore.Views.UsuarioDetallePage"
+             xmlns:vm="clr-namespace:AppFakeStore.ViewModels"
+             xmlns:models="clr-namespace:AppFakeStore.Models"
+             x:DataType="vm:UsuarioDetalleViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Barra de búsqueda -->
+            <StackLayout Orientation="Horizontal" Margin="0,0,50,0">
+                <Entry HorizontalOptions="FillAndExpand"
+                       HeightRequest="40"
+                       TextColor="White"
+                       Text="{Binding Id}"
+                       Placeholder="Ingrese Id"
+                       PlaceholderColor="Gray"/>
+                <Button Text="Buscar"
+                        Command="{Binding UsuarioIdCommand}"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="80"/>
+            </StackLayout>
+
+            <!-- Información del Usuario -->
+            <Frame BackgroundColor="#f5f5f5" CornerRadius="10" Padding="15" HasShadow="True" Margin="0,50,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Información del Usuario" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="DarkBlue" 
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Nombre" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.username}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Email" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.Email}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Teléfono" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.phone}" FontSize="16" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Información de Dirección -->
+            <Frame BackgroundColor="#f5f5f5" CornerRadius="10" Padding="15" HasShadow="True">
+                <VerticalStackLayout>
+                    <Label Text="Dirección" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="DarkBlue" 
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Calle" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.address.street}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Número" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.address.number}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Ciudad" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.address.city}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Código Postal" FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding User.address.zipcode}" FontSize="16" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Botón de Navegación -->
+            <Button Text="Volver a Lista" 
+                    Command="{Binding GoBackCommand}" 
+                    BackgroundColor="Aquamarine" 
+                    FontAttributes="Bold" 
+                    FontSize="16" 
+                    Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
